@@ -1,7 +1,8 @@
 /*
 ============================================
 ; Title:  Assignment 1.3
-; Author: Micah Connelly
+; Author: Professor Massoud
+; Modified: Micah Connelly
 ; Date:   8/9/2020
 ; Description: Assignment 1.3 - modules
 ;===========================================
