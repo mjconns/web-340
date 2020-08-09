@@ -1,2 +1,1 @@
-# web-340
-BU web-340 assignments
+Repository for web-340 Node.js #contributors Professor Massoud - Bellevue University Micah Connelly - Bellevue University
