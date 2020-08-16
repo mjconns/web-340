@@ -1,0 +1,70 @@
+<!--
+============================================
+; Title:  Assignment 2.4
+; Author: 
+; Modified: 
+; Date:8/16/2020
+; Description: Assignment 2.4 - EJS views
+;===========================================
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="stylesheet.css" rel="stylesheet">
+    <title>Micah's place</title>
+
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+
+
+    <div class="jumbotron p-3 mb-2 bg-primary text-white">
+        <h1 class="display-4">EJS Outputs from a Node Server</h1>
+        <hr class="my-8" style="border-top: 2px solid rgba(0,0,0,.3);">
+        <p class="lead">Assignment 2.4 - EJS Views</p>
+    </div>
+
+    <div class="container" style="margin-left: 20px; margin-top: 20px;">
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+                <h5 class="card-title">First Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= firstName %></h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+                <h5 class="card-title">Last Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= lastName %></h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+                <h5 class="card-title">Address</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= address %></h6>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
