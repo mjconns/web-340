@@ -3,7 +3,7 @@
 ; Title:  Exercise 3.4
 ; Author: Professor Massoud
 ; Modifications by: Micah Connelly
-; Date: 3/23/2020
+; Date: 
 ; Description: Assignment 3.4 -- putting it all together
 ;===========================================
 */
