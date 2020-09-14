@@ -1,11 +1,23 @@
 {
-    "name": "pug-template",
-    "author": "Professor Massoud",
-    "private": true,
-    "dependencies": {
-        "body-parser": "^1.19.0",
-        "ejs": "^3.1.5",
-        "express": "^4.17.1",
-        "morgan": "^1.10.0"
-    }
+  "name": "app.js",
+  "author": "Professor Massoud",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^4.1.1",
+    "mongoose": "^5.10.5",
+    "morgan": "^1.10.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "6.11.x"
+  }
 }

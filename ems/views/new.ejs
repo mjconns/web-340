@@ -1,0 +1,43 @@
+<!-- ============================================
+; Title: Assignment 6.4
+; Author: Professor Krasso
+; Modified: Micah Connelly
+; Date: 9/14/2020
+; Description: Assignment 6.4 - EMS (Milestone 2): User Interface Submission
+=========================================== -->
+
+<%- include("navbar") %>
+<br />
+<br />
+<br />
+<div role="main" class="container justify-content-center">
+    <br />
+    <h2 class="text-success">Adding New Employee</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" id="firstName" aria-describedby="firstName">
+            <small id="firstName" class="form-text text-muted">First Name Only</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="text" class="form-control" id="lastName" aria-describedby="lastName">
+            <small id="lastName" class="form-text text-muted">Last Name Only</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Title</label>
+            <input type="text" class="form-control" id="title">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="info">
+            <label class="form-check-label" for="exampleCheck1">Info Is Completed</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br /><br />
+
+</div>
+<%- include("footer") %>
+<%- include("scripts") %>
