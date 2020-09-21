@@ -3,26 +3,20 @@
 ; Title: Assignment 6.4
 ; Author: Professor Krasso
 ; Modified: Micah Connelly
-; Date: 9/14/2020
-; Description: Assignment 6.4 - EMS (Milestone 2): User Interface Submission
+; Date: 9/21/2020
+; Description: EMS project
 ;===========================================
 */
 
 //requires
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //define the employees schema
-var emsSchema = new Schema({
+let employeeSchema = new Schema({
     firstName: String,
-    lastName: String,
-    title: String,
-    salary: String,
-    years: String,
+    lastName: String
 });
 
-//define the employee model
-var Employee = mongoose.model("Employee", emsSchema);
-
-//expose employee to calling files
-module.exports = Employee;
+// Export the model so its publicly available.
+module.exports = mongoose.model('Employee', employeeSchema);

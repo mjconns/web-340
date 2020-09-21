@@ -1,23 +1,46 @@
 /*
 ============================================
-; Title: Assignment 6.4
+; Title: EMS preject
 ; Author: Professor Krasso
 ; Modified: Micah Connelly
-; Date: 9/14/2020
-; Description: Assignment 6.4 - EMS (Milestone 2): User Interface Submission
+; Date: 9/21/2020
+; Description: Assignment EMS preject
 ===========================================
 */
 
 // Import header
 const header = require('../header-connelly');
-console.log(header.display('Micah', 'Connelly', 'Assignment 6.4'));
+console.log(header.display('Micah', 'Connelly', 'EMS project'));
 
 //variables
-var express = require("express");
-var http = require("http");
-var path = require("path");
-var logger = require("morgan");
-var app = express();
+const helmet = require('helmet');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
+const mongoose = require('mongoose');
+const express = require("express");
+const http = require("http");
+const path = require("path");
+const logger = require("morgan");
+const app = express();
+const Employee = require('./models/employees');
+
+// database connection string to MongoDB Atlas
+const conn = "mongodb+srv://cluster0.8ojcm.gcp.mongodb.net/EMS --username mjconns2009";
+
+/**
+ * Database connection
+ */
+mongoose.connect(conn, {
+    promiseLibrary: require('bluebird'),
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+}).then(() => {
+    console.log('Connection to the database instance was successful');
+}).catch(err => {
+    console.log(`MongoDB Error: ${err.message}`);
+});
 
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
