@@ -22,9 +22,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const mongoose = require('mongoose');
-const Fruit = require('./models/employees');
-
-
+const Employee = require('./models/employee');
 
 // * database connection string to MongoDB Atlas
 const conn = 'mongodb+srv://mjconns2009:Mn102007@cluster0.8ojcm.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority';
@@ -40,18 +38,6 @@ db.on("error", console.error.bind(console, "MongoDB connected error: "));
 db.once("open", function () {
     console.log("App connected to mLab MongoDB instance");
 });
-
-
-// mongoose.connect(conn, {
-//     promiseLibrary: require('Cluster0'),
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-// }).then(() => {
-//     console.log('Connection to the database instance was successful');
-// }).catch(err => {
-//     console.log(`MongoDB Error: ${err.message}`);
-// });
 
 // * Sets up CSRF protection
 let csrfProtection = csrf({
@@ -88,12 +74,10 @@ app.use(function (req, res, next) {
 // * Sets up the view engine, view's directory path, and the server port
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set('port', process.env.PORT || 3000);
-
-app.use(express.static(__dirname + '/public'));
+app.set('port', process.env.PORT || 8080);
 // Once I did that, I was able to link to my CSS within my header.js file like below:
 // <link rel="stylesheet" href="/css/styles.css">
-
+app.use(express.static(__dirname + '/public'));
 
 /**
  * Description: Redirects users to the 'index' page.
@@ -121,41 +105,60 @@ app.get("/new", function (request, response) {
     });
 });
 
+app.post('/process', function (req, res) {
+    console.log(req.body.txtFirstName, req.body.txtLastName, 'got here');
+    if (!req.body.txtFirstName || !req.body.txtLastName) {
+        res.status(400).send("missing value");
+        return;
+    }
 
-/**
- * Description: Processes a form submission.
- * Type: HttpPost
- * Request: textName
- * Response: index.ejs
- * URL: localhost:8080/process
- */
-// app.post('/process', function (req, res) {
-//     // console.log(request.body.txtName);
-//     if (!req.body.txtName) {
-//         res.status(400).send('Entries must have a name');
-//         return;
-//     }
+    //set object
+    const newFirstName = req.body.txtFirstName;
+    const newLastName = req.body.txtLastName;
+    const newTitle = req.body.txtTitle;
 
-//     // get the request's form data
-//     const fruitName = req.body.txtName;
-//     console.log(fruitName);
+    //create object
+    let saveEmployee = new Employee({
+        firstName: newFirstName,
+        lastName: newLastName,
+        title: newTitle,
+    });
 
-//     // create a fruit model
-//     let fruit = new Fruit({
-//         name: fruitName
-//     });
+    // save record
+    saveEmployee.save(function (err) {
+        if (err) {
+            console.log(err);
+            throw err;
+        } else {
+            console.log(saveEmployee + ' saved successfully!');
+            res.redirect('/');
+        }
+    });
+});
 
-//     // save
-//     fruit.save(function (err) {
-//         if (err) {
-//             console.log(err);
-//             throw err;
-//         } else {
-//             console.log(fruitName + ' saved successfully!');
-//             res.redirect('/');
-//         }
-//     });
-// });
+
+// VIEW PAGE - This section takes a GET request, searches the mongo db for the name, retrieves the results and puts them back in the UI.
+
+app.get('/view/:queryName', function (req, res) {
+    debugger;
+    const queryName = req.params.queryName;
+
+    Employee.find({
+        'firstName': queryName
+    }, function (error, employees) {
+        if (error) throw error;
+
+        if (employees.length > 0) {
+            res.render("view", {
+                title: "Employee Record",
+                employee: employees
+            });
+        } else {
+            console.log('employee missing');
+            res.redirect("/");
+        }
+    })
+})
 
 /**
  * Creates a new Node.js server and listens on local port 8080.

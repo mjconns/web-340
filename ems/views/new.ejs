@@ -14,26 +14,36 @@
     <br />
     <h2 class="text-success">Adding New Employee</h2>
 
-    <form>
+    <form method="post" action="/process">
+
         <div class="form-group">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="text" class="form-control" id="firstName" aria-describedby="firstName">
-            <small id="firstName" class="form-text text-muted">First Name Only</small>
+            <label for="txtFirstNamee">First Name</label>
+            <input type="text" class="form-control" id="txtFirstNamee" aria-describedby="txtFirstNamee" name="txtFirstNamee">
+            <small id="txtFirstNamee" class="form-text text-muted">First Name Only</small>
         </div>
+
         <div class="form-group">
-            <label for="exampleInputEmail1">Last Name</label>
-            <input type="text" class="form-control" id="lastName" aria-describedby="lastName">
-            <small id="lastName" class="form-text text-muted">Last Name Only</small>
+            <label for="txtLastName">Last Name</label>
+            <input type="text" class="form-control" id="txtLastName" aria-describedby="txtLastName" name="txtLastName">
+            <small id="txtLastName" class="form-text text-muted">Last Name Only</small>
         </div>
+
         <div class="form-group">
-            <label for="exampleInputPassword1">Title</label>
-            <input type="text" class="form-control" id="title">
+            <label for="txtTitle">Title</label>
+            <input type="text" class="form-control" id="txtTitle" aria-describedby="txtTitle" name="txtTitle">
         </div>
+
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="info">
-            <label class="form-check-label" for="exampleCheck1">Info Is Completed</label>
+            <label class="form-check-label" for="info">Done</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="form-group">
+            <!-- CSRF token -->
+            <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
     </form>
 
     <br /><br />

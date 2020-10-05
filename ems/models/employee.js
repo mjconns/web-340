@@ -14,8 +14,9 @@ const Schema = mongoose.Schema;
 
 //define the employees schema
 let employeeSchema = new Schema({
-    firstName: String,
-    lastName: String
+    firstName: {type: String, required: true },
+    lastName: {type: String, required: true },
+    title: {type: String, required: true }
 });
 
 // Export the model so its publicly available.
